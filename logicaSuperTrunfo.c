@@ -5,12 +5,18 @@
 atributos de cada carta para determinar o jogador vencedor do duelo ***ATUALIZADO DIA 27/03/2025***.*/
 //Nova função atribuida, agr temos uma estrutura de decisão basica onde é feita a comparação de atributos pre-definidos onde após
 //a comparação onde é mostrado para os jogadores qual carta venceu atravez de seu atributo ***ATUALIZADO DIA 31/03/2025***.
+//Nova função atribuida, AGR TEMOS UM MENU INTERATIVO FEITO COM SWITCH ONDE O JOGADOR PODE ESCOLHER UM ATRIBUTO
+//PARA REALIZAR A COMPARAÇÃO ***ATUALIZADO DIA 31/03/2025***.
 
 //INICIO DO CODIGO
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 int main (){
+    srand(time(0));
     // Variaveis da carta 1
+    int JOGADOR1;//VARIAVEL PARA UTILIZAR O MENU INTERATIVO
     char carta1[4];
     char estado1[4];
     char codigo1[20] ;
@@ -25,6 +31,7 @@ int main (){
     float resultadoSuperPoder1;
 
     // Variaveis da carta 2
+    int JOGADOR2;//VARIAVEL PARA UTILIZAR O MENU INTERATIVO
     char carta2[4];
     char estado2[4];
     char codigo2[20] ;
@@ -152,10 +159,92 @@ printf("CARTA DO JOGADOR 02 \n\nCARTA: %s\nEstado:%s\nCódigo:%s\nCidade: %s\nPo
     printf("CARTA 1- %s (%s): %.2f\n",cidade1,estado1,area1);
     printf("CARTA 2- %s (%s): %.2f\n",cidade2,estado2,area2);
     if(area1 > area2){
-        printf("RESULTADO: CARTA 1- (%s) venceu!\n",cidade1);
+        printf("RESULTADO: CARTA 1- (%s) venceu!",cidade1);
     }else{
         printf("RESULTADO: CARTA 2- (%s) venceu!\n",cidade2);
     }
+
+    // NESTA ETAPA TEM O SEGUNDO METODO DE COMPARAÇÃO 
+    printf("***COMPARAÇÃO NIVEL 2 ***\n\n");
+    printf("Escolha uma opção:\n");
+    printf("1.AREA\n");
+    printf("2.POPULAÇÃO\n");
+    printf("3.PIB\n");
+    printf("4.PONTOS TURISTICOS\n");
+    printf("5.DENSIDADE DEMOGRAFICA\n");
+    printf("Escolha:\n");
+    scanf("%d",&JOGADOR1);
+
+    
+
+    switch (JOGADOR1)
+    {
+    case 1: //AREA
+    if (area1 > area2){
+        printf("jogador 1 cidade escolhida %s - jogador 2 cidade escolhida %s\n", cidade1,cidade2);
+        printf("atributo Escolhido - Area\n");
+        printf("jogador 1 Area:%f - jogador 2 Area:%f\n",area1,area2);
+        printf("%s tem a maior area\n",cidade1); 
+        }else if(area1 < area2)
+        printf("%s tem a menor area\n",cidade2); 
+       else if (area1 == area2)
+       {
+        printf("###EMPATE###");  
+       }
+        break;
+        case 2://POPULAÇÃO
+        if (populacao1 > populacao2){
+            printf("jogador 1 cidade escolhida %s - jogador 2 cidade escolhida %s\n", cidade1,cidade2);
+            printf("atributo Escolhido - população\n");
+            printf("jogador 1 população:%u - jogador 2 população:%u\n",populacao1,populacao2);
+            printf("%s tem a maior população\n",cidade1); 
+         } else if(populacao1 < populacao2)
+        printf("%s tem a menor população\n",cidade2); 
+       else if (populacao1 == populacao2)
+       {
+        printf("###EMPATE###"); 
+       }      
+       break;
+        case 3://PIB
+        if (pib1 > pib2){
+            printf("jogador 1 cidade escolhida %s - jogador 2 cidade escolhida %s\n", cidade1,cidade2);
+            printf("atributo Escolhido - PIB\n");
+            printf("jogador 1 PIB:%f - jogador 2 PIB:%f\n",pib1,pib2);
+            printf("%s tem o maior PIB\n",cidade1); 
+         } else if(pib1 < pib2)
+        printf("%s tem o menor PIB\n",cidade2); 
+       else if (pib1 == pib2)
+       {
+        printf("###EMPATE###"); 
+       } 
+       break;
+        case 4://PONTOS TURISTICOS
+        if (NumeroDePontosTuristicos1 > NumeroDePontosTuristicos2){
+            printf("jogador 1 cidade escolhida %s - jogador 2 cidade escolhida %s\n", cidade1,cidade2);
+            printf("atributo Escolhido - PONTOS TURISTICOS\n");
+            printf("jogador 1 PONTOS TURISTICOS:%i - jogador 2 PONTOS TURISTICOS:%i\n",NumeroDePontosTuristicos1,NumeroDePontosTuristicos2);
+            printf("%s tem o maior numero de pontos turisticos\n",cidade1); 
+         } else if(NumeroDePontosTuristicos1 < NumeroDePontosTuristicos2)
+        printf("%s tem o menor numero de pontos turisticos\n",cidade2); 
+       else if (NumeroDePontosTuristicos1 == NumeroDePontosTuristicos2)
+       {
+        printf("###EMPATE###"); 
+       }
+       break;
+        case 5://DENSIDADE DEMOGRAFICA
+        if (densidadePopulacionalInvertido1 < densidadePopulacionalInvertido2){
+            printf("jogador 1 cidade escolhida %s - jogador 2 cidade escolhida %s\n", cidade1,cidade2);
+            printf("atributo Escolhido - DENSIDADE DEMOGRAFICA \n");
+            printf("jogador 1 DENSIDADE DEMOGRAFICA:%.2f - jogador 2 DENSIDADE DEMOGRAFICA:%.2f\n",densidadePopulacionalInvertido1,densidadePopulacionalInvertido2);
+            printf("%s tem a maior DENSIDADE DEMOGRAFICA\n",cidade1); 
+         } else if(densidadePopulacionalInvertido1 > densidadePopulacionalInvertido2)
+        printf("%s tem a menor DENSIDADE DEMOGRAFICA\n",cidade2); 
+       else if (densidadePopulacionalInvertido1 == densidadePopulacionalInvertido2)
+       {
+        printf("###EMPATE###"); 
+       }        
+    }
+
     return 0;
 }
 
